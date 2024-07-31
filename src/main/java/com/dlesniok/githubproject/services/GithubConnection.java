@@ -1,6 +1,7 @@
 package com.dlesniok.githubproject.services;
 
 import com.dlesniok.githubproject.exceptions.GithubException;
+import com.dlesniok.githubproject.exceptions.NotFoundException;
 import com.dlesniok.githubproject.models.api.SimpleResponse;
 import com.dlesniok.githubproject.models.github.Branch;
 import com.dlesniok.githubproject.models.github.api.FullRepoModel;
@@ -36,6 +37,9 @@ public class GithubConnection {
             );
 
             return repoResponse;
+        }
+        if(response.getStatusCode() == HttpURLConnection.HTTP_NOT_FOUND){
+            throw new NotFoundException("5");
         }
         throw new GithubException(response);
 

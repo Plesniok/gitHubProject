@@ -27,7 +27,7 @@ public class GitHubController {
 
 
     @GetMapping("/git/{username}/repos")
-    public ResponseEntity<ApiResponse<List<UserRepo>>> getUserRepos(@PathVariable("username") String username) throws IOException, GithubException {
+    public ResponseEntity<List<UserRepo>> getUserRepos(@PathVariable("username") String username) throws IOException, GithubException {
         List<UserRepo> userRepos = githubService.getUserRepos(username);
 
         return Responses.ok(userRepos, Constant.getProductsResponsesHashMap(), Constant.GIT_HUB_PROJECT.concat("1"));

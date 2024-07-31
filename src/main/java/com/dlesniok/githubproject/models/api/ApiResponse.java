@@ -11,14 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ApiResponse <T> {
 
-    private String status;
-
-    private Integer httpStatus;
+    private Integer status;
 
     private String message;
-
-    private String internalCode;
-
-    private T data;
 
 }
