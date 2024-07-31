@@ -4,7 +4,7 @@ import java.util.List;
 
 public class UserRepo {
     private String name;
-    private String ownerName;
+    private String ownerLogin;
     private List<Branch> branches;
 
     public String getName() {
@@ -15,12 +15,12 @@ public class UserRepo {
         this.name = name;
     }
 
-    public String getOwnerName() {
-        return ownerName;
+    public String getOwnerLogin() {
+        return ownerLogin;
     }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
+    public void setOwnerLogin(String ownerLogin) {
+        this.ownerLogin = ownerLogin;
     }
 
     public List<Branch> getBranches() {

@@ -3,9 +3,11 @@ package com.dlesniok.githubproject.controllers;
 import com.dlesniok.githubproject.exceptions.GithubException;
 import com.dlesniok.githubproject.models.api.ApiResponse;
 import com.dlesniok.githubproject.models.github.UserRepo;
+import com.dlesniok.githubproject.models.github.api.FullRepoModel;
 import com.dlesniok.githubproject.services.GithubConnection;
 import com.dlesniok.githubproject.models.api.Responses;
 import com.dlesniok.githubproject.models.api.Constant;
+import com.dlesniok.githubproject.services.GithubService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,17 +19,18 @@ import java.util.List;
 @RestController
 public class GitHubController {
 
-    public GitHubController(GithubConnection githubConnection){
-        this.githubConnection = githubConnection;
+    public GitHubController(GithubService githubService){
+        this.githubService = githubService;
     }
 
-    private GithubConnection githubConnection;
+    private GithubService githubService;
+
 
     @GetMapping("/git/{username}/repos")
     public ResponseEntity<ApiResponse<List<UserRepo>>> getUserRepos(@PathVariable("username") String username) throws IOException, GithubException {
-        List<UserRepo> userRepos = githubConnection.getUserRepos(username);
+        List<UserRepo> userRepos = githubService.getUserRepos(username);
 
-        return Responses.ok(null, Constant.getProductsResponsesHashMap(), Constant.GIT_HUB_PROJECT.concat("1"));
+        return Responses.ok(userRepos, Constant.getProductsResponsesHashMap(), Constant.GIT_HUB_PROJECT.concat("1"));
 
 
     }

@@ -1,7 +1,13 @@
 package com.dlesniok.githubproject.models.github;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Branch {
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("commit")
     private Commit lastCommit;
 
     public String getName() {
