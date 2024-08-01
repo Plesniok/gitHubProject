@@ -2,7 +2,7 @@
 
 ## Overview
 I would like to present some of my skills in writing REST API using Spring Boot tchnology.
-This project implements useer authentication and basic CRUD functionalities (products)
+This project implements fetching data from Github API about user repositories.
 
 ## Dependencies
 Before you begin, ensure you have met the following requirements:
