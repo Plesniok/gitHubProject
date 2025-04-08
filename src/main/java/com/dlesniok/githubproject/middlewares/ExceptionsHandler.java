@@ -6,6 +6,7 @@ import com.dlesniok.githubproject.models.api.ApiResponse;
 import com.dlesniok.githubproject.models.api.Constant;
 import com.dlesniok.githubproject.models.api.Responses;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -48,6 +49,13 @@ public class ExceptionsHandler {
                 .replaceAll("\\[*]*", "");
 
         return Responses.badRequest(null, Constant.getProductsResponsesHashMap(), Constant.GIT_HUB_PROJECT.concat(invalidParametersErrorMessage));
+
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<ApiResponse> anyError(HttpServletRequest ignoredRequest, Exception ignoredException) {
+
+        return Responses.internalServerError(Constant.getProductsResponsesHashMap(), Constant.GIT_HUB_PROJECT.concat("4"));
 
     }
 
